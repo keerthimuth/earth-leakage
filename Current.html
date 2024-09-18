@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leakage Current Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        input[type="number"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #008cba;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #005f6b;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Leakage Current Calculator</h2>
+        <label for="current">Enter Current (I):</label>
+        <input type="number" id="current" placeholder="Enter current value in Amps">
+
+        <label for="resistance">Enter Resistance (R):</label>
+        <input type="number" id="resistance" placeholder="Enter resistance value in Ohms">
+
+        <button onclick="calculateLeakage()">Calculate Leakage Current</button>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateLeakage() {
+            // Get the input values
+            const current = document.getElementById('current').value;
+            const resistance = document.getElementById('resistance').value;
+
+            // Validate input
+            if (current === '' || resistance === '') {
+                alert('Please enter both current and resistance values.');
+                return;
+            }
+
+            // Convert input values to numbers
+            const I = parseFloat(current);
+            const R = parseFloat(resistance);
+
+            // Calculate leakage current using a hypothetical formula
+            // For example, let's assume the formula is: Leakage = I / R
+            const leakageCurrent = I / R;
+
+            // Display the result
+            document.getElementById('result').innerText = `Leakage Current: ${leakageCurrent.toFixed(2)} Amps`;
+        }
+    </script>
+</body>
+</html>

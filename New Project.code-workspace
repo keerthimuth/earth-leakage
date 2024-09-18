@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../Project"
+		},
+		{
+			"path": "../react"
+		},
+		{
+			"path": "../ADP"
+		}
+	],
+	"settings": {}
+}

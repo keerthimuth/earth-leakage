@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Leakage Calculation</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        input[type="number"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #008cba;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #005f6b;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Leakage Current Calculator</h2>
+        <label for="voltage">Enter Voltage (V):</label>
+        <input type="number" id="voltage" placeholder="Enter Voltage Value in volts">
+
+        
+
+        <button onclick="calculateLeakage()">calculate leakage current</button>
+
+        <div class="result" id="result"></div>
+
+    </div>
+
+    <script>
+         function calculateLeakage() {
+          const voltage = document.getElementById('voltage').value;
+          
+
+          if(voltage === '')
+          {
+            alert('Please enter voltage value.')
+            return;
+          }
+
+          const V = parseFloat(voltage);
+         
+
+          const leakagecurrent=((V-2.5)/0.185)-0.125;
+
+          document.getElementById('result').innerText = `Leakage current : ${leakagecurrent.toFixed(4)} Amps`;
+         }
+    </script>
+</body>
+</html>

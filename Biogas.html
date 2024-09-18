@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Methane Gas Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        form {
+            display: inline-block;
+        }
+        label, input, select {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        input, select {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        h2, h3 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Calculate Amount of Methane Gas (in moles)</h2>
+
+        <form id="methaneForm">
+            <label for="pressure">Pressure (atm or Pa):</label>
+            <input type="number" id="pressure" name="pressure" step="any" required>
+
+            <label for="volume">Volume (liters or cubic meters):</label>
+            <input type="number" id="volume" name="volume" step="any" required>
+
+            <label for="temperature">Temperature (Kelvin):</label>
+            <input type="number" id="temperature" name="temperature" step="any" required>
+
+            <label for="unit">Pressure Unit:</label>
+            <select id="unit" name="unit">
+                <option value="atm">atm</option>
+                <option value="Pa">Pa</option>
+            </select>
+
+            <button type="button" onclick="calculateMethane()">Calculate Moles of Methane</button>
+        </form>
+
+        <h3>Result:</h3>
+        <p id="result">Moles of Methane Gas: </p>
+    </div>
+
+    <script>
+        // Function to calculate moles of gas using the Ideal Gas Law
+        function calculateMethane() {
+            // Get input values
+            const pressure = parseFloat(document.getElementById('pressure').value);
+            const volume = parseFloat(document.getElementById('volume').value);
+            const temperature = parseFloat(document.getElementById('temperature').value);
+            const unit = document.getElementById('unit').value;
+
+            // Constants
+            const R_atm = 0.0821; // Ideal gas constant in L·atm/mol·K
+            const R_pa = 8.314;   // Ideal gas constant in J/mol·K
+
+            // Check if the pressure is in atm or Pa
+            const R = (unit === 'atm') ? R_atm : R_pa;
+
+            // Calculate the number of moles (n) using PV = nRT
+            const n = (pressure * volume) / (R * temperature);
+
+            // Display the result
+            document.getElementById('result').innerHTML = `Moles of Methane Gas: ${n.toFixed(4)}`;
+        }
+    </script>
+
+</body>
+</html>
